@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自动签到 查询以及删除页面</title>
+    <link rel="stylesheet" href="css/nav.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/query.css" />
+    <script src="js/right.js"></script>
+    <script src="js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/nav.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @media all and (max-width: 920px) {
+        #cs_box {
+          display: none;
+        }
+        form {
+          position: relative;
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+    </style>
+    <script>
+      myEvent(window, "load", function () {
+        cs_box.set({
+          img_path: "images/01.jpg", //设置图片路径
+          qq: "474112265", //设置QQ号码
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="cssmenu">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li class="active has-sub">
+          <a href="#">增删改查</a>
+          <ul>
+            <li class="has-sub"><a href="query.html">查询及删除</a></li>
+            <!-- <li class='has-sub'><a href='#'>增加</a>
+                      <ul>
+                         <li><a href='#'>Nav2</a></li>
+                         <li><a href='#'>Nav3</a></li>
+                      </ul>
+                   </li> -->
+          </ul>
+        </li>
+        <li><a href="donation.html" class="orange">赞助我们</a></li>
+        <li id="contact"><a href="#">反馈BUG</a></li>
+      </ul>
+    </div>
+    <!-- 查询及删除 -->
+    <div class="search d1">
+      <form>
+        <input
+          type="text"
+          onkeyup="value=value.replace(/[^\d]/g,'')"
+          placeholder="请输入你的学号查询..."
+        />
+        <button type="button"></button>
+      </form>
+    </div>
+    <!-- 表格 -->
+    <div class="table_box">
+      <table class="table table-condensed">
+        <caption>
+          查询信息
+        </caption>
+        <thead>
+          <tr>
+            <th>学号</th>
+            <th>密码</th>
+            <th>班级</th>
+            <th>分院</th>
+            <th>地址</th>
+            <th>是否返校</th>
+            <th>学历</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <!-- 右侧 -->
+    <div id="cs_box">
+      <span class="cs_title">QQ在线咨询</span>
+      <span class="cs_close">x</span>
+      <div class="cs_img"></div>
+      <span class="cs_info">联系qq:474112265</span>
+      <div class="cs_btn">反馈BUG</div>
+    </div>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="js/query.js"></script>
+  </body>
+</html>

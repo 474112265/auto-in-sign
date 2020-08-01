@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# 2020-6-12
+# Explicitly cached 'master entries'.
+CACHE:
+skin/*
+# Resources that require the user to be online.
+FALLBACK:
+contact.html 404.html
+index.html 404.html

@@ -1,0 +1,66 @@
+#cs_box {
+  width: 120px;
+  height: 220px;
+  background: #54a7ff;
+  position: fixed;
+  right: 10px;
+  top:calc(50% - 60px);
+  border-radius: 10px;
+  z-index: 999;
+  transform: translateY(-50%);
+}
+#cs_box span {
+  color: #fff;
+  height: 20px;
+  line-height: 20px;
+  font-family: "Arial";
+  display: block;
+}
+.cs_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.cs_title {
+  font-size: 14px;
+  margin: 10px;
+  font-weight: bold;
+}
+.cs_img {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  margin: 10px;
+}
+.cs_info {
+  font-size: 12px;
+  margin: 0px 10px;
+  overflow: hidden;
+  text-align: center;
+}
+.cs_btn {
+  width: 100px;
+  height: 25px;
+  background: #333;
+  margin: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 25px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+.col-sm-10>input::-webkit-input-placeholder {
+  /*WebKit browsers*/
+  color: white;
+}
+.col-sm-10>input::-moz-input-placeholder {
+  /*Mozilla Firefox*/
+  color: white;
+}
+.col-sm-10>input::-ms-input-placeholder {
+  /*Internet Explorer*/
+  color: white;
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日汇报自动签到</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="./css/component.css">
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link href="https://cdn.bootcdn.net/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+  <script src="js/right.js"></script><!-- 右边的聊天栏-->
+  <script src="js/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="js/nav.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./js/sweet-alert.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-horizontal {
+      width: 600px;
+      margin: 60px auto;
+    }
+
+    .form-group {
+      text-align: center;
+    }
+
+    .btn-default {
+      width: 100px;
+      height: 35px;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    @media all and (max-width: 920px) {
+      body {
+        height: 850px !important;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .form-horizontal {
+        width: 95%;
+      }
+
+      #cs_box {
+        display: none;
+      }
+    }
+
+    #big_box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    label {
+      color: greenyellow;
+    }
+
+    .form-control {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .form-control {
+      color: white;
+    }
+
+    .custom {
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin: 10px 60px;
+    }
+
+    /* .shadow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: #000;
+            opacity: 0.5;
+            z-index: 9999;
+        } */
+  </style>
+  <script>
+    myEvent(window, "load", function () {
+      cs_box.set({
+        img_path: "images/01.jpg", //设置图片路径
+        qq: "474112265", //设置QQ号码
+      });
+    });
+  </script>
+  <img src="./images/bg.jpg" style="display: none;" alt="图片加载失败,请重新刷新页面" />
+</head>
+
+<body class="body_box large-header" id="large-header">
+  <img src="./images/three.png" style="display: none;" alt="">
+  <canvas id="demo-canvas"></canvas>
+  <!-- 遮罩层 -->
+  <!-- <div class="shadow"></div>
+    <div class="Contact">
+
+    </div> -->
+  <!-- 图片预加载 -->
+  <div id="big_box">
+
+    <div id="cssmenu">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li class="active has-sub">
+          <a href="#">增删改查</a>
+          <ul>
+            <li class="has-sub"><a href="query.html">查询及删除</a></li>
+            <!-- <li class='has-sub'><a href='#'>增加</a>
+                    <ul>
+                       <li><a href='#'>Nav2</a></li>
+                       <li><a href='#'>Nav3</a></li>
+                    </ul>
+                 </li> -->
+          </ul>
+        </li>
+        <li><a href="donation.html" class="orange">赞助我们</a></li>
+        <li id="contact"><a href="#">反馈BUG</a></li>
+      </ul>
+    </div>
+    <h2 style="text-align: center; font-style: italic; color: greenyellow;">
+      每日汇报自动签到
+    </h2>
+    <h4 style="text-align: center; font-weight: bold; color: greenyellow;opacity: 0.8;">
+      请勿恶意填写信息,否则直接封禁ip访问
+    </h4>
+    <h5 style="text-align: center; font-weight: bold; color: yellow;">
+      本网站仅供娱乐使用，如有特殊情况请立即向班级所在的辅导员反馈
+    </h5>
+
+    <form class="form-horizontal" action="../sql.js">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">学号</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputEmail3" onkeyup="value=value.replace(/[^\d]/g,'')"
+            placeholder="请输入你的学号" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword3" placeholder="请输入你的身份证后六位" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword4" class="col-sm-2 control-label">班级</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword4" placeholder="请输入你的班级" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5" class="col-sm-2 control-label">分院</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="inputPassword5">
+            <option>信息技术学院</option>
+            <option>网络工程学院</option>
+            <option>软件工程学院</option>
+            <option>艺术与经管学院</option>
+            <option>区块链学院</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5" class="col-sm-2 control-label">学历</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="inputPassword5">
+            <option>专科</option>
+            <option>本科</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword6" class="col-sm-2 control-label">是否返校</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="inputPassword6">
+            <option>是</option>
+            <option>否</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword7" class="col-sm-2 control-label">地址</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword7" placeholder="请输入你的地址" maxlength="20" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="button" class="btn btn-default" style="background-color: rgba(255, 255, 255,0.6);">提交</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="cs_box">
+      <span class="cs_title">QQ在线咨询</span>
+      <span class="cs_close">x</span>
+      <div class="cs_img"></div>
+      <span class="cs_info">联系qq:474112265</span>
+      <div class="cs_btn">反馈BUG</div>
+    </div>
+  </div>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/rAF.js"></script>
+  <script>
+    $(function () {
+      $("#contact").on("click", function () {
+        var link = "http://wpa.qq.com/msgrd?v=3&uin=" + 474112265 + "&site=qq&menu=yes";
+        window.open(link, "_blank");
+      });
+    });
+
+  </script>
+</body>
+
+</html>
